@@ -173,7 +173,8 @@ function criarLinhaMorador(morador) {
   celulaSituacao.innerHTML = `<span class="badge-situacao ${classeBadge}">${rotuloBadge}</span>`;
 
   const celulaAcoes = document.createElement("td");
-  celulaAcoes.className = "tabela__acoes";
+  const areaAcoes = document.createElement("div");
+  areaAcoes.className = "tabela__acoes";
 
   const botaoEditar = document.createElement("button");
   botaoEditar.type = "button";
@@ -193,8 +194,9 @@ function criarLinhaMorador(morador) {
     botaoToggle.addEventListener("click", () => prepararConfirmacaoToggle(morador, true));
   }
 
-  celulaAcoes.appendChild(botaoEditar);
-  celulaAcoes.appendChild(botaoToggle);
+  areaAcoes.appendChild(botaoEditar);
+  areaAcoes.appendChild(botaoToggle);
+  celulaAcoes.appendChild(areaAcoes);
 
   linha.appendChild(celulaNome);
   linha.appendChild(celulaCpf);

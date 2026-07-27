@@ -3,137 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Livro de Ocorrências | Portaria do Condomínio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Special+Elite&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
+  <title>Painel | Condomínio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header class="capa">
-    <div class="capa__titulo">
-      <svg class="capa__icone" viewBox="0 0 48 48" aria-hidden="true">
-        <rect x="6" y="8" width="36" height="34" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-        <line x1="6" y1="16" x2="42" y2="16" stroke="currentColor" stroke-width="2"/>
-        <line x1="14" y1="8" x2="14" y2="42" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/>
-        <line x1="34" y1="8" x2="34" y2="42" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/>
-        <rect x="20" y="24" width="8" height="18" fill="currentColor"/>
-      </svg>
-      <div>
-        <span class="capa__eyebrow">Portaria &middot; Livro de Ocorrências</span>
-        <h1>Painel de Gestão do Condomínio</h1>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar__marca">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg>
+        Condomínio
       </div>
+
+      <nav class="sidebar__nav" aria-label="Navegação principal">
+        <a href="../dashboard/index.html" class="sidebar__item ativo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          <span>Painel</span>
+        </a>
+
+        <span class="sidebar__rotulo">Cadastros</span>
+        <a href="../unidades/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg>
+          <span>Unidades</span>
+        </a>
+        <a href="../moradores/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M17 11h4M19 9v4"/></svg>
+          <span>Moradores</span>
+        </a>
+
+        <span class="sidebar__rotulo">Operação</span>
+        <a href="../reservas/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <span>Reservas</span>
+        </a>
+        <a href="../chamados/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
+          <span>Chamados</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="area-principal">
+      <header class="topo-pagina">
+        <div>
+          <span class="topo-pagina__eyebrow">Visão geral</span>
+          <h1>Painel de Gestão</h1>
+        </div>
+
+        <div class="aba-filtro">
+          <label for="filtro-bloco">Bloco</label>
+          <select id="filtro-bloco" disabled>
+            <option value="">Todos</option>
+          </select>
+        </div>
+      </header>
+
+      <main id="conteudo-principal">
+
+        <div id="estado-carregando" class="estado-aviso">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Carregando dados do condomínio...</p>
+        </div>
+
+        <div id="estado-erro" class="estado-aviso estado-aviso--erro oculto">
+          <p><strong>Não foi possível carregar o painel.</strong></p>
+          <p>Verifique se o servidor de dados está em execução e tente novamente.</p>
+          <button id="botao-tentar-novamente" type="button" class="botao-secundario">Tentar novamente</button>
+        </div>
+
+        <div id="painel" class="painel oculto">
+
+          <p class="nota-filtro oculto" id="nota-filtro-geral"></p>
+
+          <section class="cards-status reveal" aria-label="Contagem de chamados por status">
+            <article class="card-status spotlight" data-status="aberto">
+              <span class="selo" data-selo="aberto">Aberto</span>
+              <strong class="card-status__numero" id="numero-aberto">0</strong>
+              <span class="card-status__legenda">chamados</span>
+            </article>
+
+            <article class="card-status spotlight" data-status="em andamento">
+              <span class="selo" data-selo="em andamento">Em andamento</span>
+              <strong class="card-status__numero" id="numero-em-andamento">0</strong>
+              <span class="card-status__legenda">chamados</span>
+            </article>
+
+            <article class="card-status spotlight" data-status="resolvido">
+              <span class="selo" data-selo="resolvido">Resolvido</span>
+              <strong class="card-status__numero" id="numero-resolvido">0</strong>
+              <span class="card-status__legenda">chamados</span>
+            </article>
+          </section>
+
+          <section class="fachada-secao reveal">
+            <h3>Mapa das unidades — chamados em aberto</h3>
+            <div class="fachada" id="fachada"></div>
+            <div class="fachada__legenda">
+              <span><i style="background:var(--superficie-2)"></i> Sem chamado aberto</span>
+              <span><i style="background:var(--st-aberto-bg); border-color:var(--st-aberto-pt)"></i> Com chamado aberto</span>
+            </div>
+          </section>
+
+          <section class="grid-paineis reveal">
+
+            <article class="painel-secao spotlight">
+              <h2>Reservas de área comum</h2>
+
+              <div class="painel-secao__bloco">
+                <h3>Reservas confirmadas por área</h3>
+                <ul id="lista-reservas-area" class="lista-barras"></ul>
+              </div>
+
+              <div class="painel-secao__bloco">
+                <h3>Ranking das áreas mais reservadas</h3>
+                <ol id="lista-ranking-areas" class="lista-ranking"></ol>
+              </div>
+            </article>
+
+            <article class="painel-secao spotlight">
+              <h2>Chamados</h2>
+
+              <div class="painel-secao__bloco">
+                <h3>Tempo médio de resolução</h3>
+                <p class="estatistica-grande" id="tempo-medio-resolucao">—</p>
+              </div>
+
+              <div class="painel-secao__bloco">
+                <h3>Distribuição por categoria</h3>
+                <p class="total-chamados">Total de chamados: <span id="total-chamados-valor">0</span></p>
+                <ul id="lista-categoria" class="lista-barras"></ul>
+              </div>
+            </article>
+
+          </section>
+
+          <section class="painel-secao spotlight reveal">
+            <h2>Ranking de moradores com mais chamados</h2>
+            <ol id="lista-ranking-moradores" class="lista-ranking lista-ranking--moradores"></ol>
+          </section>
+
+          <footer class="ficha-rodape">
+            <span>Sistema de Gestão de Condomínio</span>
+            <span id="carimbo-atualizacao" class="carimbo-data"></span>
+          </footer>
+
+        </div>
+
+      </main>
     </div>
-
-    <div class="capa__aba">
-      <label for="filtro-bloco">Bloco</label>
-      <select id="filtro-bloco" disabled>
-        <option value="">Todos</option>
-      </select>
-    </div>
-
-    <nav class="capa__nav" aria-label="Navegação principal">
-      <a href="../dashboard/index.html" class="ativo">Painel</a>
-      <a href="../unidades/index.html">Unidades</a>
-      <a href="../moradores/index.html">Moradores</a>
-      <a href="../reservas/index.html">Reservas</a>
-      <a href="../chamados/index.html">Chamados</a>
-    </nav>
-  </header>
-
-  <main id="conteudo-principal">
-
-    <!-- Estado de carregamento exibido enquanto os 4 fetches não terminam -->
-    <div id="estado-carregando" class="estado-aviso">
-      <div class="spinner" aria-hidden="true"></div>
-      <p>Consultando o arquivo da portaria...</p>
-    </div>
-
-    <!-- Estado de erro exibido se algum fetch falhar -->
-    <div id="estado-erro" class="estado-aviso estado-aviso--erro oculto">
-      <p><strong>Não foi possível abrir o livro de ocorrências.</strong></p>
-      <p>Houve algum erro no servidor.</p>
-      <button id="botao-tentar-novamente" type="button" class="botao-secundario">Tentar novamente</button>
-    </div>
-
-    <!-- Conteúdo real do dashboard, oculto até os dados chegarem -->
-    <div id="painel" class="painel oculto">
-
-      <p class="nota-filtro oculto" id="nota-filtro-geral"></p>
-
-      <section class="cards-status" aria-label="Contagem de chamados por status">
-        <article class="card-status" data-status="aberto">
-          <span class="selo" data-selo="aberto">Aberto</span>
-          <strong class="card-status__numero" id="numero-aberto">0</strong>
-          <span class="card-status__legenda">chamados</span>
-        </article>
-
-        <article class="card-status" data-status="em andamento">
-          <span class="selo" data-selo="em andamento">Em andamento</span>
-          <strong class="card-status__numero" id="numero-em-andamento">0</strong>
-          <span class="card-status__legenda">chamados</span>
-        </article>
-
-        <article class="card-status" data-status="resolvido">
-          <span class="selo" data-selo="resolvido">Resolvido</span>
-          <strong class="card-status__numero" id="numero-resolvido">0</strong>
-          <span class="card-status__legenda">chamados</span>
-        </article>
-      </section>
-
-      <section class="grid-paineis">
-
-        <article class="painel-secao">
-          <h2>Reservas de área comum</h2>
-
-          <div class="painel-secao__bloco">
-            <h3>Reservas confirmadas por área</h3>
-            <ul id="lista-reservas-area" class="lista-barras"></ul>
-          </div>
-
-          <div class="painel-secao__bloco">
-            <h3>Ranking das áreas mais reservadas</h3>
-            <ol id="lista-ranking-areas" class="lista-ranking"></ol>
-          </div>
-        </article>
-
-        <article class="painel-secao painel-secao--furada">
-          <h2>Chamados</h2>
-
-          <div class="painel-secao__bloco">
-            <h3>Tempo médio de resolução</h3>
-            <p class="estatistica-grande" id="tempo-medio-resolucao">—</p>
-          </div>
-
-          <div class="painel-secao__bloco">
-            <h3>Distribuição por categoria</h3>
-            <p class="total-chamados">Total de chamados: <span id="total-chamados-valor">0</span></p>
-            <ul id="lista-categoria" class="lista-barras"></ul>
-          </div>
-        </article>
-
-      </section>
-
-      <section class="painel-secao painel-secao--largo">
-        <h2>Ranking de moradores com mais chamados</h2>
-        <ol id="lista-ranking-moradores" class="lista-ranking lista-ranking--moradores"></ol>
-      </section>
-
-      <footer class="ficha-rodape">
-        <span>Livro de Ocorrências &middot; Condomínio</span>
-        <span id="carimbo-atualizacao" class="carimbo-data"></span>
-      </footer>
-
-    </div>
-
-  </main>
+  </div>
 
   <script src="script.js"></script>
+  <script src="efeitos.js"></script>
 </body>
 </html>

@@ -156,7 +156,69 @@ function renderizarPainel(dados, blocoSelecionado) {
   const ranking = calcularRankingDeMoradores(chamadosFiltrados, dados.moradores, dados.unidades);
   renderizarRankingDeMoradores(ranking);
 
+  renderizarFachada(dados.unidades, dados.moradores, dados.chamados);
+
   atualizarNotaDeFiltro(blocoSelecionado);
+}
+
+// Mapa visual do prédio: acende a unidade que tem algum chamado não resolvido.
+// Sempre olha para o conjunto completo (não segue o filtro de bloco), pois é
+// uma visão geral do prédio inteiro. Não recalcula nem altera nenhum dado.
+function renderizarFachada(unidades, moradores, chamados) {
+  const elementoFachada = document.getElementById("fachada");
+  if (!elementoFachada) {
+    return;
+  }
+
+  const idsDeMoradoresComChamadoAberto = [];
+  for (const chamado of chamados) {
+    if (chamado.status !== "resolvido") {
+      idsDeMoradoresComChamadoAberto.push(String(chamado.moradorId));
+    }
+  }
+
+  const idsDeUnidadesComChamadoAberto = [];
+  for (const morador of moradores) {
+    if (idsDeMoradoresComChamadoAberto.includes(String(morador.id))) {
+      idsDeUnidadesComChamadoAberto.push(String(morador.unidadeId));
+    }
+  }
+
+  const blocos = {};
+  for (const unidade of unidades) {
+    if (!blocos[unidade.bloco]) {
+      blocos[unidade.bloco] = [];
+    }
+    blocos[unidade.bloco].push(unidade);
+  }
+
+  elementoFachada.innerHTML = "";
+
+  const nomesDosBlocos = Object.keys(blocos).sort();
+  for (const nomeDoBloco of nomesDosBlocos) {
+    const blocoElemento = document.createElement("div");
+    blocoElemento.className = "fachada__bloco";
+
+    const nomeElemento = document.createElement("span");
+    nomeElemento.className = "fachada__nome";
+    nomeElemento.textContent = `Bloco ${nomeDoBloco}`;
+    blocoElemento.appendChild(nomeElemento);
+
+    const celsElemento = document.createElement("div");
+    celsElemento.className = "fachada__cels";
+
+    for (const unidade of blocos[nomeDoBloco]) {
+      const temChamadoAberto = idsDeUnidadesComChamadoAberto.includes(String(unidade.id));
+      const celula = document.createElement("div");
+      celula.className = temChamadoAberto ? "fachada__cel fachada__cel--chamado" : "fachada__cel";
+      celula.textContent = unidade.numero;
+      celula.title = temChamadoAberto ? "Há chamado em aberto nesta unidade" : "Sem chamado em aberto";
+      celsElemento.appendChild(celula);
+    }
+
+    blocoElemento.appendChild(celsElemento);
+    elementoFachada.appendChild(blocoElemento);
+  }
 }
 
 function atualizarNotaDeFiltro(blocoSelecionado) {
@@ -346,9 +408,32 @@ function contarChamadosPorStatus(chamados) {
 }
 
 function renderizarCardsDeStatus(contagem) {
-  document.getElementById("numero-aberto").textContent = contagem["aberto"];
-  document.getElementById("numero-em-andamento").textContent = contagem["em andamento"];
-  document.getElementById("numero-resolvido").textContent = contagem["resolvido"];
+  animarNumero(document.getElementById("numero-aberto"), contagem["aberto"]);
+  animarNumero(document.getElementById("numero-em-andamento"), contagem["em andamento"]);
+  animarNumero(document.getElementById("numero-resolvido"), contagem["resolvido"]);
+}
+
+// Sobe o número até o valor final já calculado — puramente visual, não recalcula nada
+function animarNumero(elemento, valorFinal) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    elemento.textContent = valorFinal;
+    return;
+  }
+
+  const duracao = 700;
+  const valorInicial = Number(elemento.textContent) || 0;
+  const inicio = performance.now();
+
+  function passo(agora) {
+    const progresso = Math.min((agora - inicio) / duracao, 1);
+    const suavizado = 1 - Math.pow(1 - progresso, 3);
+    elemento.textContent = Math.round(valorInicial + (valorFinal - valorInicial) * suavizado);
+    if (progresso < 1) {
+      requestAnimationFrame(passo);
+    }
+  }
+
+  requestAnimationFrame(passo);
 }
 
 // Reinicia a animação de "carimbada" dos selos sempre que os números mudam

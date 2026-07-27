@@ -3,90 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moradores | Livro de Ocorrências</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Special+Elite&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
+  <title>Moradores | Condomínio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header class="capa">
-    <div class="capa__titulo">
-      <svg class="capa__icone" viewBox="0 0 48 48" aria-hidden="true">
-        <rect x="6" y="8" width="36" height="34" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-        <line x1="6" y1="16" x2="42" y2="16" stroke="currentColor" stroke-width="2"/>
-        <line x1="14" y1="8" x2="14" y2="42" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/>
-        <line x1="34" y1="8" x2="34" y2="42" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/>
-        <rect x="20" y="24" width="8" height="18" fill="currentColor"/>
-      </svg>
-      <div>
-        <span class="capa__eyebrow">Portaria &middot; Livro de Ocorrências</span>
-        <h1>Moradores</h1>
-      </div>
-    </div>
-
-    <nav class="capa__nav" aria-label="Navegação principal">
-      <a href="../dashboard/index.html">Painel</a>
-      <a href="../unidades/index.html">Unidades</a>
-      <a href="../moradores/index.html" class="ativo">Moradores</a>
-      <a href="../reservas/index.html">Reservas</a>
-      <a href="../chamados/index.html">Chamados</a>
-    </nav>
-  </header>
-
-  <main id="conteudo-principal">
-
-    <!-- Estado de carregamento exibido enquanto os dados não terminam de chegar -->
-    <div id="estado-carregando" class="estado-aviso">
-      <div class="spinner" aria-hidden="true"></div>
-      <p>Consultando o arquivo da portaria...</p>
-    </div>
-
-    <!-- Estado de erro exibido se a busca falhar -->
-    <div id="estado-erro" class="estado-aviso estado-aviso--erro oculto">
-      <p><strong>Não foi possível abrir o cadastro de moradores.</strong></p>
-      <p>Verifique se o servidor de dados (json-server) está em execução e tente novamente.</p>
-      <button id="botao-tentar-novamente" type="button" class="botao-secundario">Tentar novamente</button>
-    </div>
-
-    <!-- Conteúdo real da tela, oculto até os dados chegarem -->
-    <div id="painel" class="painel oculto">
-
-      <div id="mensagem" class="mensagem oculto" role="status">
-        <span id="mensagem-texto"></span>
-        <button type="button" id="botao-fechar-mensagem" aria-label="Fechar mensagem">&times;</button>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar__marca">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg>
+        Condomínio
       </div>
 
-      <div class="barra-acoes">
-        <h2>Moradores cadastrados</h2>
-        <button type="button" id="botao-novo-morador" class="botao-primario">+ Novo morador</button>
-      </div>
+      <nav class="sidebar__nav" aria-label="Navegação principal">
+        <a href="../dashboard/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          <span>Painel</span>
+        </a>
 
-      <div class="tabela-wrapper">
-        <table class="tabela">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Telefone</th>
-              <th>Unidade</th>
-              <th>Situação</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="corpo-tabela-moradores"></tbody>
-        </table>
-      </div>
+        <span class="sidebar__rotulo">Cadastros</span>
+        <a href="../unidades/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg>
+          <span>Unidades</span>
+        </a>
+        <a href="../moradores/index.html" class="sidebar__item ativo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M17 11h4M19 9v4"/></svg>
+          <span>Moradores</span>
+        </a>
 
+        <span class="sidebar__rotulo">Operação</span>
+        <a href="../reservas/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <span>Reservas</span>
+        </a>
+        <a href="../chamados/index.html" class="sidebar__item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
+          <span>Chamados</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="area-principal">
+      <header class="topo-pagina">
+        <div>
+          <span class="topo-pagina__eyebrow">Cadastros</span>
+          <h1>Moradores</h1>
+        </div>
+      </header>
+
+      <main id="conteudo-principal">
+
+        <div id="estado-carregando" class="estado-aviso">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Carregando moradores...</p>
+        </div>
+
+        <div id="estado-erro" class="estado-aviso estado-aviso--erro oculto">
+          <p><strong>Não foi possível abrir o cadastro de moradores.</strong></p>
+          <p>Verifique se o servidor de dados está em execução e tente novamente.</p>
+          <button id="botao-tentar-novamente" type="button" class="botao-secundario">Tentar novamente</button>
+        </div>
+
+        <div id="painel" class="painel oculto">
+
+          <div id="mensagem" class="mensagem oculto" role="status">
+            <span id="mensagem-texto"></span>
+            <button type="button" id="botao-fechar-mensagem" aria-label="Fechar mensagem">&times;</button>
+          </div>
+
+          <div class="barra-acoes reveal">
+            <h2>Moradores cadastrados</h2>
+            <button type="button" id="botao-novo-morador" class="botao-primario">+ Novo morador</button>
+          </div>
+
+          <div class="tabela-wrapper reveal">
+            <table class="tabela">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Telefone</th>
+                  <th>Unidade</th>
+                  <th>Situação</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="corpo-tabela-moradores"></tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </main>
     </div>
-
-  </main>
+  </div>
 
   <!-- Modal de cadastro/edição de morador -->
   <div id="overlay-formulario" class="overlay oculto">
@@ -94,7 +104,6 @@
       <button type="button" class="modal__fechar" id="botao-fechar-formulario" aria-label="Fechar">&times;</button>
       <h2 id="titulo-modal-formulario">Novo morador</h2>
 
-      <!-- Exibido apenas quando não há nenhuma unidade cadastrada -->
       <div id="aviso-sem-unidades" class="aviso-bloqueio oculto">
         <p>Nenhuma unidade cadastrada ainda.</p>
         <p>É preciso cadastrar ao menos uma unidade antes de registrar um morador.</p>
@@ -148,5 +157,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="efeitos.js"></script>
 </body>
 </html>

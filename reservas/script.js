@@ -271,7 +271,8 @@ function criarLinhaReserva(reserva) {
   celulaStatus.innerHTML = `<span class="badge-situacao ${apresentacao.classeBadge}">${apresentacao.rotulo}</span>`;
 
   const celulaAcoes = document.createElement("td");
-  celulaAcoes.className = "tabela__acoes";
+  const areaAcoes = document.createElement("div");
+  areaAcoes.className = "tabela__acoes";
 
   if (apresentacao.podeCancelar) {
     const botaoCancelar = document.createElement("button");
@@ -279,13 +280,15 @@ function criarLinhaReserva(reserva) {
     botaoCancelar.className = "botao-pequeno botao-pequeno--perigo";
     botaoCancelar.textContent = "Cancelar";
     botaoCancelar.addEventListener("click", () => prepararCancelamento(reserva));
-    celulaAcoes.appendChild(botaoCancelar);
+    areaAcoes.appendChild(botaoCancelar);
   } else {
     const textoSomenteLeitura = document.createElement("span");
     textoSomenteLeitura.className = "tabela__somente-leitura";
     textoSomenteLeitura.textContent = "Somente leitura";
-    celulaAcoes.appendChild(textoSomenteLeitura);
+    areaAcoes.appendChild(textoSomenteLeitura);
   }
+
+  celulaAcoes.appendChild(areaAcoes);
 
   linha.appendChild(celulaMorador);
   linha.appendChild(celulaUnidade);

@@ -236,6 +236,20 @@ function truncarDescricao(texto) {
   return `${texto.slice(0, LIMITE).trim()}...`;
 }
 
+// Só desenha o progresso aberto → em andamento → resolvido; não recalcula nada,
+// usa a mesma SEQUENCIA_STATUS que já existia
+function criarStepperMini(status) {
+  const indiceAtual = SEQUENCIA_STATUS.indexOf(status);
+  let pontos = "";
+
+  for (let i = 0; i < SEQUENCIA_STATUS.length; i = i + 1) {
+    const classeExtra = i <= indiceAtual ? " stepper-mini__ponto--cheio" : "";
+    pontos += `<span class="stepper-mini__ponto${classeExtra}"></span>`;
+  }
+
+  return `<div class="stepper-mini" aria-hidden="true">${pontos}</div>`;
+}
+
 function obterClasseBadgeDeStatus(status) {
   if (status === "aberto") {
     return "badge-situacao--aberto";
@@ -271,24 +285,32 @@ function criarLinhaChamado(chamado) {
 
   const celulaStatus = document.createElement("td");
   const classeBadge = obterClasseBadgeDeStatus(chamado.status);
-  celulaStatus.innerHTML = `<span class="badge-situacao ${classeBadge}">${chamado.status}</span>`;
+  celulaStatus.innerHTML = `
+    <div class="celula-status">
+      <span class="badge-situacao ${classeBadge}">${chamado.status}</span>
+      ${criarStepperMini(chamado.status)}
+    </div>
+  `;
 
   const celulaAcoes = document.createElement("td");
-  celulaAcoes.className = "tabela__acoes";
+  const areaAcoes = document.createElement("div");
+  areaAcoes.className = "tabela__acoes";
 
   if (chamado.status === "resolvido") {
     const textoSomenteLeitura = document.createElement("span");
     textoSomenteLeitura.className = "tabela__somente-leitura";
     textoSomenteLeitura.textContent = "Somente leitura";
-    celulaAcoes.appendChild(textoSomenteLeitura);
+    areaAcoes.appendChild(textoSomenteLeitura);
   } else {
     const botaoAvancar = document.createElement("button");
     botaoAvancar.type = "button";
     botaoAvancar.className = "botao-pequeno";
     botaoAvancar.textContent = "Avançar status";
     botaoAvancar.addEventListener("click", () => prepararAvancoDeStatus(chamado));
-    celulaAcoes.appendChild(botaoAvancar);
+    areaAcoes.appendChild(botaoAvancar);
   }
+
+  celulaAcoes.appendChild(areaAcoes);
 
   linha.appendChild(celulaMorador);
   linha.appendChild(celulaCategoria);

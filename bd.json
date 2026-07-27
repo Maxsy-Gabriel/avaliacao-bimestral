@@ -61,28 +61,82 @@
       "tipo": "casa"
     },
     {
-      "numero": "3123213",
-      "bloco": "C",
-      "tipo": "casa",
-      "id": "wPVaudgudyI"
-    },
-    {
       "numero": "443",
       "bloco": "C",
       "tipo": "casa",
       "id": "Q4PjeBlHTts"
     },
     {
-      "numero": "sadas13213",
-      "bloco": "33333431134",
-      "tipo": "apartamento",
-      "id": "XCDJv1i738s"
+      "id": "11",
+      "numero": "101",
+      "bloco": "D",
+      "tipo": "apartamento"
     },
     {
-      "numero": "123",
-      "bloco": "b",
-      "tipo": "casa",
-      "id": "rMff8LBILQk"
+      "id": "12",
+      "numero": "102",
+      "bloco": "D",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "13",
+      "numero": "201",
+      "bloco": "D",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "14",
+      "numero": "202",
+      "bloco": "D",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "15",
+      "numero": "101",
+      "bloco": "E",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "16",
+      "numero": "102",
+      "bloco": "E",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "17",
+      "numero": "201",
+      "bloco": "E",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "18",
+      "numero": "01",
+      "bloco": "F",
+      "tipo": "casa"
+    },
+    {
+      "id": "19",
+      "numero": "02",
+      "bloco": "F",
+      "tipo": "casa"
+    },
+    {
+      "id": "20",
+      "numero": "03",
+      "bloco": "F",
+      "tipo": "casa"
+    },
+    {
+      "id": "21",
+      "numero": "101",
+      "bloco": "G",
+      "tipo": "apartamento"
+    },
+    {
+      "id": "22",
+      "numero": "102",
+      "bloco": "G",
+      "tipo": "apartamento"
     }
   ],
   "moradores": [
@@ -124,7 +178,7 @@
       "cpf": "555.666.777-88",
       "telefone": "(11) 91234-5605",
       "unidadeId": 6,
-      "ativo": true
+      "ativo": false
     },
     {
       "id": "6",
@@ -132,7 +186,7 @@
       "cpf": "666.777.888-99",
       "telefone": "(11) 91234-5606",
       "unidadeId": 7,
-      "ativo": true
+      "ativo": false
     },
     {
       "id": "7",
@@ -167,20 +221,108 @@
       "ativo": false
     },
     {
-      "nome": "34",
-      "cpf": "123.123.123-12",
-      "telefone": "(12) 32132-1321",
-      "unidadeId": "1",
-      "ativo": false,
-      "id": "Qi-Pxj_4V80"
-    },
-    {
       "nome": "1asd",
       "cpf": "111.111.111-11",
       "telefone": "(11) 11111-1111",
       "unidadeId": "1",
       "ativo": true,
       "id": "0o7rFGBp-Oo"
+    },
+    {
+      "id": "11",
+      "nome": "Roberto Ferreira",
+      "cpf": "123.321.456-78",
+      "telefone": "(11) 91234-5611",
+      "unidadeId": 11,
+      "ativo": true
+    },
+    {
+      "id": "12",
+      "nome": "Mariana Castro",
+      "cpf": "234.432.567-89",
+      "telefone": "(11) 91234-5612",
+      "unidadeId": 12,
+      "ativo": true
+    },
+    {
+      "id": "13",
+      "nome": "Lucas Oliveira",
+      "cpf": "345.543.678-90",
+      "telefone": "(11) 91234-5613",
+      "unidadeId": 13,
+      "ativo": true
+    },
+    {
+      "id": "14",
+      "nome": "Vanessa Santos",
+      "cpf": "456.654.789-01",
+      "telefone": "(11) 91234-5614",
+      "unidadeId": 14,
+      "ativo": false
+    },
+    {
+      "id": "15",
+      "nome": "Gabriel Barbosa",
+      "cpf": "567.765.890-12",
+      "telefone": "(11) 91234-5615",
+      "unidadeId": 15,
+      "ativo": true
+    },
+    {
+      "id": "16",
+      "nome": "Amanda Ribeiro",
+      "cpf": "678.876.901-23",
+      "telefone": "(11) 91234-5616",
+      "unidadeId": 16,
+      "ativo": true
+    },
+    {
+      "id": "17",
+      "nome": "Thiago Mendes",
+      "cpf": "789.987.012-34",
+      "telefone": "(11) 91234-5617",
+      "unidadeId": 17,
+      "ativo": false
+    },
+    {
+      "id": "18",
+      "nome": "Beatriz Cardoso",
+      "cpf": "890.098.123-45",
+      "telefone": "(11) 91234-5618",
+      "unidadeId": 18,
+      "ativo": true
+    },
+    {
+      "id": "19",
+      "nome": "Rodrigo Carvalho",
+      "cpf": "901.109.234-56",
+      "telefone": "(11) 91234-5619",
+      "unidadeId": 19,
+      "ativo": true
+    },
+    {
+      "id": "20",
+      "nome": "Camila Nogueira",
+      "cpf": "012.210.345-67",
+      "telefone": "(11) 91234-5620",
+      "unidadeId": 20,
+      "ativo": false
+    },
+    {
+      "id": "21",
+      "nome": "Felipe Augusto",
+      "cpf": "112.223.334-45",
+      "telefone": "(11) 91234-5621",
+      "unidadeId": 21,
+      "ativo": true
+    },
+    {
+      "id": "22",
+      "nome": "Larissa Machado",
+      "cpf": "223.334.445-56",
+      "telefone": "(11) 91234-5622",
+      "unidadeId": 22,
+      "ativo": true
     }
   ],
   "reservas": [
@@ -288,6 +430,83 @@
       "data": "2026-07-30",
       "status": "confirmada",
       "id": "hN6sOfLAwBw"
+    },
+    {
+      "moradorId": "8",
+      "area": "churrasqueira",
+      "data": "2026-08-21",
+      "status": "confirmada",
+      "id": "KWJyVKO7s5Q"
+    },
+    {
+      "moradorId": "0o7rFGBp-Oo",
+      "area": "salão de festas",
+      "data": "2026-08-05",
+      "status": "confirmada",
+      "id": "ULTrbFQaIlo"
+    },
+    {
+      "id": "11",
+      "moradorId": 11,
+      "area": "salão de festas",
+      "data": "2026-08-10",
+      "status": "confirmada"
+    },
+    {
+      "id": "12",
+      "moradorId": 12,
+      "area": "churrasqueira",
+      "data": "2026-08-14",
+      "status": "confirmada"
+    },
+    {
+      "id": "13",
+      "moradorId": 13,
+      "area": "quadra",
+      "data": "2026-08-20",
+      "status": "confirmada"
+    },
+    {
+      "id": "14",
+      "moradorId": 15,
+      "area": "churrasqueira",
+      "data": "2026-08-25",
+      "status": "cancelada"
+    },
+    {
+      "id": "15",
+      "moradorId": 16,
+      "area": "salão de festas",
+      "data": "2026-09-05",
+      "status": "confirmada"
+    },
+    {
+      "id": "16",
+      "moradorId": 18,
+      "area": "quadra",
+      "data": "2026-09-12",
+      "status": "confirmada"
+    },
+    {
+      "id": "17",
+      "moradorId": 19,
+      "area": "churrasqueira",
+      "data": "2026-09-18",
+      "status": "confirmada"
+    },
+    {
+      "id": "18",
+      "moradorId": 21,
+      "area": "salão de festas",
+      "data": "2026-09-20",
+      "status": "confirmada"
+    },
+    {
+      "id": "19",
+      "moradorId": 22,
+      "area": "quadra",
+      "data": "2026-09-25",
+      "status": "cancelada"
     }
   ],
   "chamados": [
@@ -351,8 +570,8 @@
       "categoria": "outros",
       "descricao": "Dúvida sobre taxa extra de manutenção do elevador",
       "dataAbertura": "2026-07-18",
-      "dataResolucao": null,
-      "status": "em andamento"
+      "dataResolucao": "2026-07-27",
+      "status": "resolvido"
     },
     {
       "id": "8",
@@ -378,8 +597,8 @@
       "categoria": "outros",
       "descricao": "Reclamação sobre horário de coleta de lixo",
       "dataAbertura": "2026-07-22",
-      "dataResolucao": null,
-      "status": "aberto"
+      "dataResolucao": "2026-07-27",
+      "status": "resolvido"
     },
     {
       "id": "11",
@@ -391,13 +610,85 @@
       "status": "em andamento"
     },
     {
-      "moradorId": "7",
+      "id": "12",
+      "moradorId": 11,
+      "categoria": "manutenção",
+      "descricao": "Vazamento na torneira do banheiro",
+      "dataAbertura": "2026-07-21",
+      "dataResolucao": "2026-07-24",
+      "status": "resolvido"
+    },
+    {
+      "id": "13",
+      "moradorId": 12,
       "categoria": "barulho",
-      "descricao": "TESTE",
-      "status": "aberto",
+      "descricao": "Som alto no bloco D após 22h",
+      "dataAbertura": "2026-07-25",
+      "dataResolucao": null,
+      "status": "em andamento"
+    },
+    {
+      "id": "14",
+      "moradorId": 13,
+      "categoria": "segurança",
+      "descricao": "Luz do portão social do bloco D queimada",
+      "dataAbertura": "2026-07-26",
+      "dataResolucao": null,
+      "status": "aberto"
+    },
+    {
+      "id": "15",
+      "moradorId": 15,
+      "categoria": "outros",
+      "descricao": "Atualização de cadastro de veículos",
+      "dataAbertura": "2026-07-10",
+      "dataResolucao": "2026-07-12",
+      "status": "resolvido"
+    },
+    {
+      "id": "16",
+      "moradorId": 16,
+      "categoria": "manutenção",
+      "descricao": "Problema no interfone do apartamento 102",
+      "dataAbertura": "2026-07-20",
+      "dataResolucao": "2026-07-22",
+      "status": "resolvido"
+    },
+    {
+      "id": "17",
+      "moradorId": 18,
+      "categoria": "barulho",
+      "descricao": "Obras fora do horário permitido no bloco F",
       "dataAbertura": "2026-07-27",
       "dataResolucao": null,
-      "id": "DqNH5R2RqAk"
+      "status": "aberto"
+    },
+    {
+      "id": "18",
+      "moradorId": 19,
+      "categoria": "segurança",
+      "descricao": "Tag do portão de pedestres não reconhecida",
+      "dataAbertura": "2026-07-14",
+      "dataResolucao": "2026-07-15",
+      "status": "resolvido"
+    },
+    {
+      "id": "19",
+      "moradorId": 21,
+      "categoria": "manutenção",
+      "descricao": "Infiltração no teto do corredor do bloco G",
+      "dataAbertura": "2026-07-23",
+      "dataResolucao": null,
+      "status": "em andamento"
+    },
+    {
+      "id": "20",
+      "moradorId": 22,
+      "categoria": "outros",
+      "descricao": "Solicitação de autorização para mudança",
+      "dataAbertura": "2026-07-26",
+      "dataResolucao": null,
+      "status": "aberto"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

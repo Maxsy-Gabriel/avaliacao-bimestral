@@ -164,7 +164,8 @@ function criarLinhaUnidade(unidade) {
   `;
 
   const celulaAcoes = document.createElement("td");
-  celulaAcoes.className = "tabela__acoes";
+  const areaAcoes = document.createElement("div");
+  areaAcoes.className = "tabela__acoes";
 
   const botaoEditar = document.createElement("button");
   botaoEditar.type = "button";
@@ -178,8 +179,9 @@ function criarLinhaUnidade(unidade) {
   botaoExcluir.textContent = "Excluir";
   botaoExcluir.addEventListener("click", () => prepararExclusao(unidade));
 
-  celulaAcoes.appendChild(botaoEditar);
-  celulaAcoes.appendChild(botaoExcluir);
+  areaAcoes.appendChild(botaoEditar);
+  areaAcoes.appendChild(botaoExcluir);
+  celulaAcoes.appendChild(areaAcoes);
 
   linha.appendChild(celulaNumero);
   linha.appendChild(celulaBloco);
