@@ -281,6 +281,13 @@
       "data": "2026-09-27",
       "status": "confirmada",
       "id": "JEBtJR61rjs"
+    },
+    {
+      "moradorId": "0o7rFGBp-Oo",
+      "area": "churrasqueira",
+      "data": "2026-07-30",
+      "status": "confirmada",
+      "id": "hN6sOfLAwBw"
     }
   ],
   "chamados": [
@@ -299,8 +306,8 @@
       "categoria": "barulho",
       "descricao": "Barulho excessivo no apartamento vizinho durante a madrugada",
       "dataAbertura": "2026-07-10",
-      "dataResolucao": null,
-      "status": "em andamento"
+      "dataResolucao": "2026-07-27",
+      "status": "resolvido"
     },
     {
       "id": "3",
@@ -308,8 +315,8 @@
       "categoria": "outros",
       "descricao": "Solicitação de segunda via de chave do portão",
       "dataAbertura": "2026-07-20",
-      "dataResolucao": null,
-      "status": "aberto"
+      "dataResolucao": "2026-07-27",
+      "status": "resolvido"
     },
     {
       "id": "4",
@@ -335,8 +342,8 @@
       "categoria": "barulho",
       "descricao": "Festa com som alto fora do horário permitido",
       "dataAbertura": "2026-07-15",
-      "dataResolucao": null,
-      "status": "aberto"
+      "dataResolucao": "2026-07-27",
+      "status": "resolvido"
     },
     {
       "id": "7",
@@ -382,6 +389,15 @@
       "dataAbertura": "2026-07-12",
       "dataResolucao": null,
       "status": "em andamento"
+    },
+    {
+      "moradorId": "7",
+      "categoria": "barulho",
+      "descricao": "TESTE",
+      "status": "aberto",
+      "dataAbertura": "2026-07-27",
+      "dataResolucao": null,
+      "id": "DqNH5R2RqAk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
