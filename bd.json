@@ -1,0 +1,319 @@
+{
+  "unidades": [
+    {
+      "id": 1,
+      "numero": "101",
+      "bloco": "A",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 2,
+      "numero": "102",
+      "bloco": "A",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 3,
+      "numero": "103",
+      "bloco": "A",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 4,
+      "numero": "104",
+      "bloco": "A",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 5,
+      "numero": "201",
+      "bloco": "B",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 6,
+      "numero": "202",
+      "bloco": "B",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 7,
+      "numero": "203",
+      "bloco": "B",
+      "tipo": "apartamento"
+    },
+    {
+      "id": 8,
+      "numero": "10",
+      "bloco": "C",
+      "tipo": "casa"
+    },
+    {
+      "id": 9,
+      "numero": "11",
+      "bloco": "C",
+      "tipo": "casa"
+    },
+    {
+      "id": 10,
+      "numero": "12",
+      "bloco": "C",
+      "tipo": "casa"
+    }
+  ],
+  "moradores": [
+    {
+      "id": 1,
+      "nome": "Ana Beatriz Costa",
+      "cpf": "111.222.333-44",
+      "telefone": "(11) 91234-5601",
+      "unidadeId": 1,
+      "ativo": true
+    },
+    {
+      "id": 2,
+      "nome": "Carlos Eduardo Lima",
+      "cpf": "222.333.444-55",
+      "telefone": "(11) 91234-5602",
+      "unidadeId": 2,
+      "ativo": true
+    },
+    {
+      "id": 3,
+      "nome": "Fernanda Souza",
+      "cpf": "333.444.555-66",
+      "telefone": "(11) 91234-5603",
+      "unidadeId": 3,
+      "ativo": false
+    },
+    {
+      "id": 4,
+      "nome": "Ricardo Almeida",
+      "cpf": "444.555.666-77",
+      "telefone": "(11) 91234-5604",
+      "unidadeId": 5,
+      "ativo": true
+    },
+    {
+      "id": 5,
+      "nome": "Juliana Pereira",
+      "cpf": "555.666.777-88",
+      "telefone": "(11) 91234-5605",
+      "unidadeId": 6,
+      "ativo": true
+    },
+    {
+      "id": 6,
+      "nome": "Marcos Vinícius Rocha",
+      "cpf": "666.777.888-99",
+      "telefone": "(11) 91234-5606",
+      "unidadeId": 7,
+      "ativo": true
+    },
+    {
+      "id": 7,
+      "nome": "Patrícia Gomes",
+      "cpf": "777.888.999-00",
+      "telefone": "(11) 91234-5607",
+      "unidadeId": 8,
+      "ativo": true
+    },
+    {
+      "id": 8,
+      "nome": "Bruno Tavares",
+      "cpf": "888.999.000-11",
+      "telefone": "(11) 91234-5608",
+      "unidadeId": 9,
+      "ativo": true
+    },
+    {
+      "id": 9,
+      "nome": "Camila Duarte",
+      "cpf": "999.000.111-22",
+      "telefone": "(11) 91234-5609",
+      "unidadeId": 10,
+      "ativo": true
+    },
+    {
+      "id": 10,
+      "nome": "Diego Martins",
+      "cpf": "123.456.789-01",
+      "telefone": "(11) 91234-5610",
+      "unidadeId": 1,
+      "ativo": false
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "moradorId": 1,
+      "area": "salão de festas",
+      "data": "2026-08-05",
+      "status": "confirmada"
+    },
+    {
+      "id": 2,
+      "moradorId": 2,
+      "area": "salão de festas",
+      "data": "2026-08-12",
+      "status": "confirmada"
+    },
+    {
+      "id": 3,
+      "moradorId": 4,
+      "area": "salão de festas",
+      "data": "2026-08-19",
+      "status": "confirmada"
+    },
+    {
+      "id": 4,
+      "moradorId": 5,
+      "area": "salão de festas",
+      "data": "2026-07-15",
+      "status": "cancelada"
+    },
+    {
+      "id": 5,
+      "moradorId": 7,
+      "area": "quadra",
+      "data": "2026-08-08",
+      "status": "confirmada"
+    },
+    {
+      "id": 6,
+      "moradorId": 8,
+      "area": "quadra",
+      "data": "2026-08-15",
+      "status": "confirmada"
+    },
+    {
+      "id": 7,
+      "moradorId": 9,
+      "area": "churrasqueira",
+      "data": "2026-08-22",
+      "status": "confirmada"
+    },
+    {
+      "id": 8,
+      "moradorId": 6,
+      "area": "salão de festas",
+      "data": "2026-09-01",
+      "status": "confirmada"
+    },
+    {
+      "id": 9,
+      "moradorId": 3,
+      "area": "quadra",
+      "data": "2026-07-20",
+      "status": "cancelada"
+    },
+    {
+      "id": 10,
+      "moradorId": 1,
+      "area": "churrasqueira",
+      "data": "2026-06-10",
+      "status": "cancelada"
+    }
+  ],
+  "chamados": [
+    {
+      "id": 1,
+      "moradorId": 1,
+      "categoria": "manutenção",
+      "descricao": "Vazamento no encanamento da cozinha",
+      "dataAbertura": "2026-07-01",
+      "dataResolucao": "2026-07-04",
+      "status": "resolvido"
+    },
+    {
+      "id": 2,
+      "moradorId": 1,
+      "categoria": "barulho",
+      "descricao": "Barulho excessivo no apartamento vizinho durante a madrugada",
+      "dataAbertura": "2026-07-10",
+      "dataResolucao": null,
+      "status": "em andamento"
+    },
+    {
+      "id": 3,
+      "moradorId": 1,
+      "categoria": "outros",
+      "descricao": "Solicitação de segunda via de chave do portão",
+      "dataAbertura": "2026-07-20",
+      "dataResolucao": null,
+      "status": "aberto"
+    },
+    {
+      "id": 4,
+      "moradorId": 2,
+      "categoria": "segurança",
+      "descricao": "Câmera do corredor do bloco A fora do ar",
+      "dataAbertura": "2026-07-05",
+      "dataResolucao": "2026-07-09",
+      "status": "resolvido"
+    },
+    {
+      "id": 5,
+      "moradorId": 4,
+      "categoria": "manutenção",
+      "descricao": "Lâmpada queimada na garagem do bloco B",
+      "dataAbertura": "2026-06-28",
+      "dataResolucao": "2026-07-02",
+      "status": "resolvido"
+    },
+    {
+      "id": 6,
+      "moradorId": 4,
+      "categoria": "barulho",
+      "descricao": "Festa com som alto fora do horário permitido",
+      "dataAbertura": "2026-07-15",
+      "dataResolucao": null,
+      "status": "aberto"
+    },
+    {
+      "id": 7,
+      "moradorId": 5,
+      "categoria": "outros",
+      "descricao": "Dúvida sobre taxa extra de manutenção do elevador",
+      "dataAbertura": "2026-07-18",
+      "dataResolucao": null,
+      "status": "em andamento"
+    },
+    {
+      "id": 8,
+      "moradorId": 6,
+      "categoria": "segurança",
+      "descricao": "Portão da garagem não fecha automaticamente",
+      "dataAbertura": "2026-06-15",
+      "dataResolucao": "2026-06-20",
+      "status": "resolvido"
+    },
+    {
+      "id": 9,
+      "moradorId": 7,
+      "categoria": "manutenção",
+      "descricao": "Infiltração na parede da churrasqueira",
+      "dataAbertura": "2026-07-02",
+      "dataResolucao": "2026-07-10",
+      "status": "resolvido"
+    },
+    {
+      "id": 10,
+      "moradorId": 7,
+      "categoria": "outros",
+      "descricao": "Reclamação sobre horário de coleta de lixo",
+      "dataAbertura": "2026-07-22",
+      "dataResolucao": null,
+      "status": "aberto"
+    },
+    {
+      "id": 11,
+      "moradorId": 8,
+      "categoria": "barulho",
+      "descricao": "Cachorro latindo por longos períodos no bloco C",
+      "dataAbertura": "2026-07-12",
+      "dataResolucao": null,
+      "status": "em andamento"
+    }
+  ]
+}

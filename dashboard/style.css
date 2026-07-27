@@ -1,0 +1,599 @@
+/* ---------------------------------------------------------
+   Tokens — Livro de Ocorrências da Portaria
+--------------------------------------------------------- */
+:root {
+  --kraft: #d9c9a1;
+  --kraft-escuro: #bfa877;
+  --papel: #f6efdd;
+  --papel-linha: #e3d5ae;
+  --tinta: #2b2420;
+  --tinta-suave: #776a54;
+
+  --carimbo-aberto: #a23b2e;
+  --carimbo-andamento: #a8721c;
+  --carimbo-resolvido: #3f6b48;
+
+  --fonte-titulo: "Special Elite", "Courier New", monospace;
+  --fonte-dado: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --fonte-corpo: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --raio: 3px;
+  --sombra-card: 0 1px 1px rgba(43, 36, 32, 0.12), 0 6px 14px rgba(43, 36, 32, 0.16);
+  --transicao: 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transicao: 0ms;
+  }
+}
+
+/* ---------------------------------------------------------
+   Base
+--------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--kraft);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(43, 36, 32, 0.035) 0 1px, transparent 1px 26px),
+    radial-gradient(ellipse at top left, rgba(255, 250, 235, 0.35), transparent 55%);
+  color: var(--tinta);
+  font-family: var(--fonte-corpo);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  margin: 0;
+  color: var(--tinta);
+}
+
+button, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--tinta);
+  outline-offset: 2px;
+}
+
+.oculto {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------
+   Capa (cabeçalho estilo capa de livro de registro)
+--------------------------------------------------------- */
+.capa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(180deg, var(--kraft-escuro) 0%, var(--kraft) 100%);
+  border-bottom: 3px double var(--tinta-suave);
+}
+
+.capa__titulo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.capa__icone {
+  width: 42px;
+  height: 42px;
+  color: var(--tinta);
+  flex-shrink: 0;
+}
+
+.capa__eyebrow {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: 0.3rem;
+}
+
+.capa h1 {
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+}
+
+.capa__aba {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--papel);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--papel-linha);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  box-shadow: var(--sombra-card);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+}
+
+.capa__aba label {
+  font-family: var(--fonte-titulo);
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.capa__aba select {
+  border: none;
+  background: transparent;
+  color: var(--tinta);
+  font-family: var(--fonte-dado);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   Conteúdo principal
+--------------------------------------------------------- */
+main {
+  padding: 1.75rem clamp(1.25rem, 4vw, 3rem) 4rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------
+   Estados: carregando / erro
+--------------------------------------------------------- */
+.estado-aviso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  color: var(--tinta-suave);
+  font-family: var(--fonte-titulo);
+}
+
+.estado-aviso--erro {
+  color: var(--carimbo-aberto);
+}
+
+.estado-aviso--erro p:first-child {
+  color: var(--tinta);
+}
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--papel-linha);
+  border-top-color: var(--tinta);
+  animation: girar 900ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    border-top-color: var(--papel-linha);
+  }
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.botao-secundario {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--raio);
+  border: 1.5px solid var(--tinta);
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-titulo);
+  cursor: pointer;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.botao-secundario:hover {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+/* ---------------------------------------------------------
+   Painel geral
+--------------------------------------------------------- */
+.painel {
+  animation: surgir var(--transicao) ease;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nota-filtro {
+  font-size: 0.82rem;
+  color: var(--tinta-suave);
+  font-style: italic;
+  margin: -0.5rem 0 1.5rem;
+}
+
+.nota-filtro::before {
+  content: "→ ";
+}
+
+/* ---------------------------------------------------------
+   Selo (assinatura visual: carimbo de borracha da portaria)
+--------------------------------------------------------- */
+.selo {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border: 2px solid currentColor;
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 40px;
+  transform: rotate(-3deg);
+  mix-blend-mode: multiply;
+  opacity: 0.88;
+  animation: carimbar 480ms cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selo {
+    animation: none;
+  }
+}
+
+@keyframes carimbar {
+  0% {
+    opacity: 0;
+    transform: scale(1.8) rotate(-14deg);
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.88;
+    transform: scale(1) rotate(-3deg);
+  }
+}
+
+.selo[data-selo="aberto"] { color: var(--carimbo-aberto); }
+.selo[data-selo="em andamento"] { color: var(--carimbo-andamento); transform: rotate(2deg); }
+.selo[data-selo="resolvido"] { color: var(--carimbo-resolvido); transform: rotate(-1.5deg); }
+
+/* ---------------------------------------------------------
+   Cards de status (fichas de índice presas com fita)
+--------------------------------------------------------- */
+.cards-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.card-status {
+  position: relative;
+  background: var(--papel);
+  border: 1px solid var(--papel-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-card);
+  padding: 1.3rem 1.25rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.card-status::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 64px;
+  height: 22px;
+  margin-left: -32px;
+  background: rgba(255, 251, 235, 0.55);
+  border: 1px solid rgba(43, 36, 32, 0.08);
+  box-shadow: 0 2px 3px rgba(43, 36, 32, 0.12);
+  transform: rotate(-2deg);
+  transition: transform var(--transicao);
+}
+
+.card-status:nth-child(1) { transform: rotate(-0.6deg); }
+.card-status:nth-child(2) { transform: rotate(0.5deg); }
+.card-status:nth-child(3) { transform: rotate(-0.3deg); }
+
+.card-status:nth-child(2)::before { transform: rotate(2deg); }
+.card-status:nth-child(3)::before { transform: rotate(-3deg); }
+
+.card-status:hover {
+  transform: translateY(-3px) rotate(0deg);
+  box-shadow: 0 4px 8px rgba(43, 36, 32, 0.14), 0 12px 22px rgba(43, 36, 32, 0.16);
+}
+
+.card-status:hover::before {
+  transform: rotate(4deg) translateY(-1px);
+}
+
+.card-status__numero {
+  padding-top: 10px;
+  font-family: var(--fonte-dado);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: opacity var(--transicao);
+}
+
+.card-status__legenda {
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+}
+
+/* ---------------------------------------------------------
+   Grid de painéis secundários
+--------------------------------------------------------- */
+.grid-paineis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.painel-secao {
+  position: relative;
+  background: var(--papel);
+  border: 1px solid var(--papel-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-card);
+  padding: 1.5rem;
+}
+
+/* Faixa de furos de encadernação entre as duas colunas (livro-razão) */
+.painel-secao--furada {
+  padding-left: 2.5rem;
+}
+
+.painel-secao--furada::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: 10px;
+  background-image: repeating-radial-gradient(
+    circle at 5px 9px,
+    var(--kraft) 0 3px,
+    transparent 3px 20px
+  );
+}
+
+@media (max-width: 700px) {
+  .painel-secao--furada {
+    padding-left: 1.5rem;
+  }
+
+  .painel-secao--furada::before {
+    display: none;
+  }
+}
+
+.painel-secao h2 {
+  font-size: 1.05rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--papel-linha);
+}
+
+.painel-secao__bloco + .painel-secao__bloco {
+  margin-top: 1.5rem;
+}
+
+.painel-secao h3 {
+  font-family: var(--fonte-corpo);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--tinta-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.painel-secao--largo {
+  margin-top: 0;
+}
+
+.estatistica-grande {
+  font-family: var(--fonte-dado);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--tinta);
+  margin: 0;
+}
+
+.total-chamados {
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+  margin: 0 0 0.85rem;
+}
+
+.total-chamados span {
+  font-family: var(--fonte-dado);
+  font-weight: 700;
+  color: var(--tinta);
+}
+
+.estatistica-grande__unidade {
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--tinta-suave);
+}
+
+/* ---------------------------------------------------------
+   Listas de barras (contagem por área / distribuição por categoria)
+--------------------------------------------------------- */
+.lista-barras {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.item-barra__topo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  margin-bottom: 0.3rem;
+}
+
+.item-barra__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  flex-shrink: 0;
+  font-family: var(--fonte-titulo);
+  color: var(--tinta-suave);
+}
+
+.item-barra__rotulo {
+  flex: 1;
+}
+
+.item-barra__trilho {
+  height: 7px;
+  background: var(--papel-linha);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.item-barra__preenchimento {
+  height: 100%;
+  background: var(--tinta);
+  border-radius: 999px;
+  transition: width 420ms ease;
+}
+
+.item-barra__valor {
+  font-family: var(--fonte-dado);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   Listas de ranking
+--------------------------------------------------------- */
+.lista-ranking {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: ranking;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item-ranking {
+  counter-increment: ranking;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.15rem;
+  border-bottom: 1px dashed var(--papel-linha);
+  font-size: 0.92rem;
+}
+
+.item-ranking:last-child {
+  border-bottom: none;
+}
+
+.item-ranking::before {
+  content: counter(ranking, decimal-leading-zero);
+  font-family: var(--fonte-dado);
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+  min-width: 1.6rem;
+}
+
+.item-ranking__nome {
+  flex: 1;
+}
+
+.item-ranking__unidade {
+  color: var(--tinta-suave);
+  font-size: 0.85rem;
+}
+
+.item-ranking__valor {
+  font-family: var(--fonte-dado);
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.mensagem-vazia {
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------
+   Rodapé (ficha de devolução de biblioteca)
+--------------------------------------------------------- */
+.ficha-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--papel);
+  border: 1px dashed var(--papel-linha);
+  border-radius: var(--raio);
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+}
+
+.carimbo-data {
+  font-family: var(--fonte-titulo);
+  color: var(--carimbo-resolvido);
+  border: 1.5px solid var(--carimbo-resolvido);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--raio);
+  transform: rotate(-2deg);
+  mix-blend-mode: multiply;
+}
+
+/* ---------------------------------------------------------
+   Responsivo
+--------------------------------------------------------- */
+@media (max-width: 560px) {
+  .capa {
+    align-items: stretch;
+  }
+
+  .card-status__numero {
+    font-size: 2rem;
+  }
+}

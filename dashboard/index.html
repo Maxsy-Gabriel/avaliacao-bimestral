@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livro de Ocorrências | Portaria do Condomínio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Special+Elite&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="capa">
+    <div class="capa__titulo">
+      <svg class="capa__icone" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="6" y="8" width="36" height="34" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="6" y1="16" x2="42" y2="16" stroke="currentColor" stroke-width="2"/>
+        <line x1="14" y1="8" x2="14" y2="42" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/>
+        <line x1="34" y1="8" x2="34" y2="42" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/>
+        <rect x="20" y="24" width="8" height="18" fill="currentColor"/>
+      </svg>
+      <div>
+        <span class="capa__eyebrow">Portaria &middot; Livro de Ocorrências</span>
+        <h1>Painel de Gestão do Condomínio</h1>
+      </div>
+    </div>
+
+    <div class="capa__aba">
+      <label for="filtro-bloco">Bloco</label>
+      <select id="filtro-bloco" disabled>
+        <option value="">Todos</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+
+    <!-- Estado de carregamento exibido enquanto os 4 fetches não terminam -->
+    <div id="estado-carregando" class="estado-aviso">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Consultando o arquivo da portaria...</p>
+    </div>
+
+    <!-- Estado de erro exibido se algum fetch falhar -->
+    <div id="estado-erro" class="estado-aviso estado-aviso--erro oculto">
+      <p><strong>Não foi possível abrir o livro de ocorrências.</strong></p>
+      <p>Verifique se o servidor de dados (json-server) está em execução e tente novamente.</p>
+      <button id="botao-tentar-novamente" type="button" class="botao-secundario">Tentar novamente</button>
+    </div>
+
+    <!-- Conteúdo real do dashboard, oculto até os dados chegarem -->
+    <div id="painel" class="painel oculto">
+
+      <p class="nota-filtro oculto" id="nota-filtro-geral"></p>
+
+      <section class="cards-status" aria-label="Contagem de chamados por status">
+        <article class="card-status" data-status="aberto">
+          <span class="selo" data-selo="aberto">Aberto</span>
+          <strong class="card-status__numero" id="numero-aberto">0</strong>
+          <span class="card-status__legenda">chamados</span>
+        </article>
+
+        <article class="card-status" data-status="em andamento">
+          <span class="selo" data-selo="em andamento">Em andamento</span>
+          <strong class="card-status__numero" id="numero-em-andamento">0</strong>
+          <span class="card-status__legenda">chamados</span>
+        </article>
+
+        <article class="card-status" data-status="resolvido">
+          <span class="selo" data-selo="resolvido">Resolvido</span>
+          <strong class="card-status__numero" id="numero-resolvido">0</strong>
+          <span class="card-status__legenda">chamados</span>
+        </article>
+      </section>
+
+      <section class="grid-paineis">
+
+        <article class="painel-secao">
+          <h2>Reservas de área comum</h2>
+
+          <div class="painel-secao__bloco">
+            <h3>Reservas confirmadas por área</h3>
+            <ul id="lista-reservas-area" class="lista-barras"></ul>
+          </div>
+
+          <div class="painel-secao__bloco">
+            <h3>Ranking das áreas mais reservadas</h3>
+            <ol id="lista-ranking-areas" class="lista-ranking"></ol>
+          </div>
+        </article>
+
+        <article class="painel-secao painel-secao--furada">
+          <h2>Chamados</h2>
+
+          <div class="painel-secao__bloco">
+            <h3>Tempo médio de resolução</h3>
+            <p class="estatistica-grande" id="tempo-medio-resolucao">—</p>
+          </div>
+
+          <div class="painel-secao__bloco">
+            <h3>Distribuição por categoria</h3>
+            <p class="total-chamados">Total de chamados: <span id="total-chamados-valor">0</span></p>
+            <ul id="lista-categoria" class="lista-barras"></ul>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="painel-secao painel-secao--largo">
+        <h2>Ranking de moradores com mais chamados</h2>
+        <ol id="lista-ranking-moradores" class="lista-ranking lista-ranking--moradores"></ol>
+      </section>
+
+      <footer class="ficha-rodape">
+        <span>Livro de Ocorrências &middot; Condomínio</span>
+        <span id="carimbo-atualizacao" class="carimbo-data"></span>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
