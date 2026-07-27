@@ -103,11 +103,19 @@ button, select { font: inherit; }
 .shell { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
 
 .sidebar {
-  background: var(--pinho);
+  /* Camada com a cor #0F1F19 (RGB: 15, 31, 25) com 85% de opacidade + Imagem */
+  background-image: linear-gradient(rgba(15, 31, 25, 0.97), rgba(15, 31, 25, 0.97)), url('../assets/predio.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0F1F19;
+
   color: rgba(255,255,255,.7);
   padding: 1.3rem 1rem;
   position: sticky; top: 0; height: 100vh; overflow-y: auto;
   display: flex; flex-direction: column;
+  border-right: 1px solid #26332D;
 }
 
 .sidebar__marca {
@@ -428,3 +436,4 @@ main { padding: 1.75rem clamp(1.25rem, 3vw, 2.25rem) 4rem; max-width: 1180px; ma
 @media (max-width: 560px) {
   .card-status__numero { font-size: 1.8rem; }
 }
+

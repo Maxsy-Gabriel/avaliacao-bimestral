@@ -83,7 +83,21 @@ button, select, input { font: inherit; }
    Casca
 ============================================================ */
 .shell { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
-.sidebar { background: var(--pinho); color: rgba(255,255,255,.7); padding: 1.3rem 1rem; position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column; }
+.sidebar {
+  /* Camada com a cor #0F1F19 (RGB: 15, 31, 25) com 85% de opacidade + Imagem */
+  background-image: linear-gradient(rgba(15, 31, 25, 0.97), rgba(15, 31, 25, 0.97)), url('../assets/predio.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0F1F19;
+
+  color: rgba(255,255,255,.7);
+  padding: 1.3rem 1rem;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  display: flex; flex-direction: column;
+  border-right: 1px solid #26332D;
+}
 .sidebar__marca { display: flex; align-items: center; gap: .6rem; color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: -.01em; padding: .35rem .5rem 1.4rem; }
 .sidebar__marca svg { flex-shrink: 0; color: var(--vivo); }
 .sidebar__nav { display: flex; flex-direction: column; gap: .15rem; }
