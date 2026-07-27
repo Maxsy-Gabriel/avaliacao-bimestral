@@ -37,6 +37,14 @@
         <option value="">Todos</option>
       </select>
     </div>
+
+    <nav class="capa__nav" aria-label="Navegação principal">
+      <a href="../dashboard/index.html" class="ativo">Painel</a>
+      <a href="../unidades/index.html">Unidades</a>
+      <a href="../moradores/index.html">Moradores</a>
+      <a href="../reservas/index.html">Reservas</a>
+      <a href="../chamados/index.html">Chamados</a>
+    </nav>
   </header>
 
   <main id="conteudo-principal">
@@ -50,7 +58,7 @@
     <!-- Estado de erro exibido se algum fetch falhar -->
     <div id="estado-erro" class="estado-aviso estado-aviso--erro oculto">
       <p><strong>Não foi possível abrir o livro de ocorrências.</strong></p>
-      <p>Verifique se o servidor de dados (json-server) está em execução e tente novamente.</p>
+      <p>Houve algum erro no servidor.</p>
       <button id="botao-tentar-novamente" type="button" class="botao-secundario">Tentar novamente</button>
     </div>
 
