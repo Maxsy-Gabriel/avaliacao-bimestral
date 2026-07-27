@@ -327,7 +327,7 @@ function renderizarTempoMedio(tempoMedio) {
   }
 
   elemento.classList.remove("mensagem-vazia");
-  elemento.innerHTML = `${tempoMedio.toFixed(1)} <span class="estatistica-grande__unidade">dias</span>`;
+  elemento.innerHTML = `${Math.floor(tempoMedio.toFixed(1))} <span class="estatistica-grande__unidade">dias</span>`;
 }
 
 function calcularDistribuicaoPorCategoria(chamados) {
