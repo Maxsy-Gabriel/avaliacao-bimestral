@@ -100,7 +100,7 @@
       "cpf": "222.333.444-55",
       "telefone": "(11) 91234-5602",
       "unidadeId": 2,
-      "ativo": true
+      "ativo": false
     },
     {
       "id": "3",
@@ -116,7 +116,7 @@
       "cpf": "444.555.666-77",
       "telefone": "(11) 91234-5604",
       "unidadeId": 5,
-      "ativo": true
+      "ativo": false
     },
     {
       "id": "5",
@@ -156,7 +156,7 @@
       "cpf": "999.000.111-22",
       "telefone": "(11) 91234-5609",
       "unidadeId": 10,
-      "ativo": true
+      "ativo": false
     },
     {
       "id": "10",
@@ -196,7 +196,7 @@
       "moradorId": 2,
       "area": "salão de festas",
       "data": "2026-08-12",
-      "status": "confirmada"
+      "status": "cancelada"
     },
     {
       "id": "3",
@@ -238,7 +238,7 @@
       "moradorId": 6,
       "area": "salão de festas",
       "data": "2026-09-01",
-      "status": "confirmada"
+      "status": "cancelada"
     },
     {
       "id": "9",
@@ -253,6 +253,34 @@
       "area": "churrasqueira",
       "data": "2026-06-10",
       "status": "cancelada"
+    },
+    {
+      "moradorId": "7",
+      "area": "salão de festas",
+      "data": "2026-08-08",
+      "status": "confirmada",
+      "id": "Q_3xjNg4WBE"
+    },
+    {
+      "moradorId": "4",
+      "area": "salão de festas",
+      "data": "2026-08-05",
+      "status": "confirmada",
+      "id": "2e1XQ6c_5eY"
+    },
+    {
+      "moradorId": "8",
+      "area": "salão de festas",
+      "data": "2026-08-19",
+      "status": "confirmada",
+      "id": "vhi0DuFG9Qg"
+    },
+    {
+      "moradorId": "8",
+      "area": "salão de festas",
+      "data": "2026-09-27",
+      "status": "confirmada",
+      "id": "JEBtJR61rjs"
     }
   ],
   "chamados": [
