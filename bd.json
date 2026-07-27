@@ -146,7 +146,7 @@
       "cpf": "111.222.333-44",
       "telefone": "(11) 91234-5601",
       "unidadeId": 1,
-      "ativo": false
+      "ativo": true
     },
     {
       "id": "2",
@@ -633,8 +633,8 @@
       "categoria": "segurança",
       "descricao": "Luz do portão social do bloco D queimada",
       "dataAbertura": "2026-07-26",
-      "dataResolucao": null,
-      "status": "em andamento"
+      "dataResolucao": "2026-07-27",
+      "status": "resolvido"
     },
     {
       "id": "15",
